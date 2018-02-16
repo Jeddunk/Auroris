@@ -1,5 +1,9 @@
-Auroris - An AS2 Club Penguin Emulator used for Club Penguin Rewritten.
+# Auroris
+### An AS2 Club Penguin Server Emulator used in Club Penguin Rewritten.
 
-Supports Card Jitsu and Sled Racing.
+Open Sourced by [ncodeyx](https://github.com/ncodeyx/Auroris), written by Hagrid.
 
-Licensed under GPLV3
+### To Do
+- Rebuild the Database Schema
+- Improve logger
+- Abstraction
