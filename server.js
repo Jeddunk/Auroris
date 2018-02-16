@@ -22,6 +22,8 @@ global.serverSettings.name = server;
 global.worldType = global.serverSettings.type;
 
 logger.start();
+logger.log("Server: " + global.serverSettings.name + ", Type: " + global.serverSettings.type, "yellow");
+
 database.start_connection();
 packets.start(true);
 error_handler.start(true);

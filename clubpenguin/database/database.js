@@ -82,8 +82,8 @@ function Database() {
 			
 			this.getWorldDataById(global.world_id, 'worldPopulation', (function(count) {
 				this.getWorldDataById(global.world_id, 'worldName', function(name) {
-					//logger.log('Pinging Database', 'blue');
-					//logger.log('There are ' + count + ' player(s) on ' + name, 'blue');
+					logger.log('Pinging Database', 'blue');
+					logger.log('There are ' + count + ' player(s) on ' + name, 'blue');
 				});
 			}).bind(this));
 		}

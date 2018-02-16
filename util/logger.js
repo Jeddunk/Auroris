@@ -4,6 +4,7 @@ var colours = require('colors');
 
 function start() {
 	let logo = [
+		"                                           ",
 		"     _                        _     		",
 		"    / \\  _   _ _ __ ___  _ __(_)___ 		",
 		"   / _ \\| | | | '__/ _ \\| '__| / __|		",
@@ -33,6 +34,34 @@ function getDateString() {
 	return date_string;
 }
 
+function getCallerFile() {
+	try {
+		Error.prepareStackTrace = function (err, stack) {
+			return stack;
+		};
+
+		var err = new Error();
+		var callerfile;
+		var currentfile;
+
+		Error.prepareStackTrace = function(err, stack) {
+			return stack;
+		};
+
+		currentfile = err.stack.shift().getFileName();
+
+		while (err.stack.length) {
+			callerfile = err.stack.shift().getFileName();
+
+			if (currentfile !== callerfile) {
+				return callerfile;
+			}
+		}
+
+	} catch (err) {}
+	return undefined;
+}
+
 function log(message, colour, newLine, newLineAfter, show) {
 	if(message == null || colour == null || show == false) {
 		return;
@@ -41,8 +70,8 @@ function log(message, colour, newLine, newLineAfter, show) {
 	if(newLine) {
 		console.log();
 	}
-	
-	final_message = "log > " + getDateString() + message;
+
+	final_message = "log " + getCallerFile().replace(/^.*[\\\/]/, '') + " > " + getDateString() + message;
 	console.log(chalk[colour].bold(final_message));
 	
 	if(newLineAfter) {
